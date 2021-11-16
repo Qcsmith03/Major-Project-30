@@ -9,7 +9,12 @@ Here i will describe what i am going to build. i wish to build a dance dance rev
 -pause screen
 -sound
 -random arrows
-
+-
 
 
 ## nice to have list
+-music
+-sound
+//-working game
+-more than 1 level
+-
