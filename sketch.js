@@ -8,9 +8,9 @@
 let state;
 let sound;
 
-function preload(){
-  sound = loadSound("assest/caramel.mp3");
-}
+// function preload(){
+//   sound = loadSound("assest/caramel.mp3");
+//}
 function setup() {
   createCanvas(windowWidth, windowHeight);
   state = "startScreen";
@@ -18,7 +18,7 @@ function setup() {
 
 function draw() {
   if (state==="startScreen"){
-    sound.play();
+    //sound.play();
     background(0);
     fill(random(255),random(255),random(255));
     textSize(50);
@@ -33,11 +33,12 @@ function draw() {
     text("Instructions",700,100);
     textSize(25);
     text("hit the up arrow, down arrow ,left arrow and right arrow in time with the moving arrows.",500,300);
+    text("click P to pause",500,400);
     text("backspace to go back",100,100);
     text("start the game with enter",500,500);
   }
   if (state === "arrowScreen"){
-    background(0);
+    background(255);
     
   }
   if (state === "pause"){
@@ -62,9 +63,18 @@ function keyPressed(){
   if (key === "p"){
     state = "pause";
   }
-  if (key === UP_ARROW && ){
+  // if (keyCode === UP_ARROW){
     
-  }
+  // }
+  // if (keyCode === RIGHT_ARROW){
+    
+  // }
+  // if (keyCode === DOWN_ARROW){
+    
+  // }
+  // if (keyCode === LEFT_ARROW){
+    
+  // }
 }
 function arrowMover(){
 

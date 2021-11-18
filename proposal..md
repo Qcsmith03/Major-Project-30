@@ -7,13 +7,13 @@ Here i will describe what i am going to build. i wish to build a dance dance rev
 -start screen
 -arrows that appear and disapear
 -pause screen
--sound
 -random arrows
 -instruction
+-click arrows (up down left right)
 
 
 ## nice to have list
 -music
 //-working game
 -more than 1 level
--
+-sound
