@@ -6,11 +6,13 @@
 // - describe what you did to take this project "above and beyond"
 
 let state;
+let arrowImg;
 let sound;
 
-// function preload(){
+function preload(){
 //   sound = loadSound("assest/caramel.mp3");
-//}
+  arrowImg = loadImage("assets/arrow.png");
+}
 function setup() {
   createCanvas(windowWidth, windowHeight);
   state = "startScreen";
@@ -39,6 +41,11 @@ function draw() {
   }
   if (state === "arrowScreen"){
     background(255);
+    image(arrowImg,500,100,50,50);
+    image(arrowImg,700,100,50,50);
+    image(arrowImg,900,100,50,50);
+    image(arrowImg,1100,100,50,50);
+
     
   }
   if (state === "pause"){
