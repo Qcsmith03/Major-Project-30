@@ -7,11 +7,17 @@
 
 let state;
 let downArrowImg;
+let leftArrowImg;
+let rightArrowImg;
+let upArrowImg;
 let sound;
 
 function preload(){
 //   sound = loadSound("assest/caramel.mp3");
-  downArrowImg = loadImage("assets/down arrow.png");
+  downArrowImg = loadImage("assets/down arrow.jpg");
+  leftArrowImg = loadImage("assets/left arrow.jpg");
+  rightArrowImg = loadImage("assets/right arrow.jpg");
+  upArrowImg = loadImage("assets/up arrow.jpg");
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -41,10 +47,10 @@ function draw() {
   }
   if (state === "arrowScreen"){
     background(255);
-    image(downArrowImg,500,100,50,50);
-    image(arrowImg,700,100,50,50);
-    image(arrowImg,900,100,50,50);
-    image(arrowImg,1100,100,50,50);
+    image(leftArrowImg,500,100,50,50);
+    image(downArrowImg,700,100,50,50);
+    image(upArrowImg,900,100,50,50);
+    image(rightArrowImg,1100,100,50,50);
 
     
   }
@@ -71,7 +77,9 @@ function keyPressed(){
     state = "pause";
   }
   // if (keyCode === UP_ARROW){
-    
+  //   fill("blue");
+  //   circle(900,100,50);
+  // }
   // }
   // if (keyCode === RIGHT_ARROW){
     

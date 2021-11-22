@@ -10,10 +10,10 @@ Here i will describe what i am going to build. i wish to build a dance dance rev
 -random arrows
 -instruction
 -click arrows (up down left right)
+-music
 
 
 ## nice to have list
--music
 //-working game
 -more than 1 level
 -sound
