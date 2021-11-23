@@ -10,6 +10,10 @@ let downArrowImg;
 let leftArrowImg;
 let rightArrowImg;
 let upArrowImg;
+let downArrowImg2;
+let leftArrowImg2;
+let rightArrowImg2;
+let upArrowImg2;
 let sound;
 
 function preload(){
@@ -18,6 +22,10 @@ function preload(){
   leftArrowImg = loadImage("assets/left arrow.jpg");
   rightArrowImg = loadImage("assets/right arrow.jpg");
   upArrowImg = loadImage("assets/up arrow.jpg");
+  downArrowImg2 = loadImage("assets/down arrow 2.jpg");
+  leftArrowImg2 = loadImage("assets/left arrow 2.jpg");
+  rightArrowImg2 = loadImage("assets/right arrow 2.jpg");
+  upArrowImg2 = loadImage("assets/up arrow 2.jpg");
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -41,27 +49,31 @@ function draw() {
     text("Instructions",700,100);
     textSize(25);
     text("hit the up arrow, down arrow ,left arrow and right arrow in time with the moving arrows.",500,300);
-    text("click P to pause",500,400);
+    // text("click P to pause",500,400);
     text("backspace to go back",100,100);
     text("start the game with enter",500,500);
   }
   if (state === "arrowScreen"){
     background(255);
+    arrowMover();
     image(leftArrowImg,500,100,50,50);
     image(downArrowImg,700,100,50,50);
     image(upArrowImg,900,100,50,50);
     image(rightArrowImg,1100,100,50,50);
-
+    image(leftArrowImg2,500,600,50,50);
+    image(downArrowImg2,700,600,50,50);
+    image(upArrowImg2,900,600,50,50);
+    image(rightArrowImg2,1100,600,50,50);
     
   }
-  if (state === "pause"){
-    background(220);
-    fill("black");
-    textSize(25);
-    text("resume with enter",500,100);
-    text("instructions with g",500,200);
-    text("start screen with back space",500,300);
-  }
+  // if (state === "pause"){
+  //   background(220);
+  //   fill("black");
+  //   textSize(25);
+  //   text("resume with enter",500,100);
+  //   text("instructions with g",500,200);
+  //   text("start screen with back space",500,300);
+  // }
 }
 function keyPressed(){
   if (key === "g" && state === "startScreen" || key === "g" && state === "pause"){
@@ -73,13 +85,13 @@ function keyPressed(){
   if (keyCode === 13){
     state = "arrowScreen";
   }
-  if (key === "p"){
-    state = "pause";
-  }
-  // if (keyCode === UP_ARROW){
-  //   fill("blue");
-  //   circle(900,100,50);
+  // if (key === "p"){
+  //   state = "pause";
   // }
+  if (keyCode === UP_ARROW){
+    
+    
+  }
   // }
   // if (keyCode === RIGHT_ARROW){
     
@@ -92,5 +104,9 @@ function keyPressed(){
   // }
 }
 function arrowMover(){
-
+  let x;
+  let y;
+  image(upArrowImg2,x,y);
+  y++;
+  
 }
