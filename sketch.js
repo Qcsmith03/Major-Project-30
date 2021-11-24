@@ -17,7 +17,7 @@ let upArrowImg2;
 let sound;
 
 function preload(){
-//   sound = loadSound("assest/caramel.mp3");
+  sound = loadSound("assest/");
   downArrowImg = loadImage("assets/down arrow.jpg");
   leftArrowImg = loadImage("assets/left arrow.jpg");
   rightArrowImg = loadImage("assets/right arrow.jpg");
@@ -55,6 +55,7 @@ function draw() {
   }
   if (state === "arrowScreen"){
     background(255);
+    sound.play();
     arrowMover();
     image(leftArrowImg,500,100,50,50);
     image(downArrowImg,700,100,50,50);
@@ -79,7 +80,7 @@ function keyPressed(){
   if (key === "g" && state === "startScreen" || key === "g" && state === "pause"){
     state = "instructionScreen";
   }
-  if (keyCode === 8 && state === "instructionScreen" || keyCode === 8 && state === "pause"){
+  if (keyCode === 8 && state === "instructionScreen" || keyCode === 8 && state === "arrowScreen"){
     state = "startScreen";
   }
   if (keyCode === 13){
@@ -88,10 +89,10 @@ function keyPressed(){
   // if (key === "p"){
   //   state = "pause";
   // }
-  if (keyCode === UP_ARROW){
+  // if (keyCode === UP_ARROW){
     
     
-  }
+  // }
   // }
   // if (keyCode === RIGHT_ARROW){
     
@@ -104,9 +105,6 @@ function keyPressed(){
   // }
 }
 function arrowMover(){
-  let x;
-  let y;
-  image(upArrowImg2,x,y);
-  y++;
+  
   
 }

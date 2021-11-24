@@ -6,7 +6,6 @@ Here i will describe what i am going to build. i wish to build a dance dance rev
 ## must have list
 - start screen
 - arrows that appear and disapear
-- pause screen
 - random arrows
 - instruction
 - click arrows (up down left right)
@@ -17,3 +16,4 @@ Here i will describe what i am going to build. i wish to build a dance dance rev
 //- working game
 - more than 1 level
 - sound
+- pause screen
