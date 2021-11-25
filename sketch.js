@@ -22,10 +22,10 @@ function preload(){
   leftArrowImg = loadImage("assets/left arrow.jpg");
   rightArrowImg = loadImage("assets/right arrow.jpg");
   upArrowImg = loadImage("assets/up arrow.jpg");
-  downArrowImg2 = loadImage("assets/down arrow 2.jpg");
-  leftArrowImg2 = loadImage("assets/left arrow 2.jpg");
-  rightArrowImg2 = loadImage("assets/right arrow 2.jpg");
-  upArrowImg2 = loadImage("assets/up arrow 2.jpg");
+  // downArrowImg2 = loadImage("assets/down arrow 2.jpg");
+  // leftArrowImg2 = loadImage("assets/left arrow 2.jpg");
+  // rightArrowImg2 = loadImage("assets/right arrow 2.jpg");
+  // upArrowImg2 = loadImage("assets/up arrow 2.jpg");
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -34,7 +34,7 @@ function setup() {
 
 function draw() {
   if (state==="startScreen"){
-    //sound.play();
+    sound.stop();
     background(0);
     fill(random(255),random(255),random(255));
     textSize(50);
@@ -61,10 +61,7 @@ function draw() {
     image(downArrowImg,700,100,50,50);
     image(upArrowImg,900,100,50,50);
     image(rightArrowImg,1100,100,50,50);
-    image(leftArrowImg2,500,600,50,50);
-    image(downArrowImg2,700,600,50,50);
-    image(upArrowImg2,900,600,50,50);
-    image(rightArrowImg2,1100,600,50,50);
+    line(500,500,100,100);
     
   }
   // if (state === "pause"){
