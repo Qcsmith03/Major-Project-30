@@ -17,7 +17,7 @@ let upArrowImg2;
 let music;
 
 function preload(){
-  music= loadSound("assets/");
+  // music= loadSound("assets/");
   
   downArrowImg = loadImage("assets/down arrow.jpg");
   leftArrowImg = loadImage("assets/left arrow.jpg");
@@ -35,7 +35,7 @@ function setup() {
 
 function draw() {
   if (state==="startScreen"){
-    music.stop();
+    // music.stop();
     background(0);
     fill(random(255),random(255),random(255));
     textSize(50);
@@ -56,14 +56,22 @@ function draw() {
   }
   if (state === "arrowScreen"){
     background(255);
-    music.play();
+    // music.play();
     arrowMover();
     image(leftArrowImg,500,100,50,50);
     image(downArrowImg,700,100,50,50);
     image(upArrowImg,900,100,50,50);
     image(rightArrowImg,1100,100,50,50);
-    line(700,700,650,650);
-    line(700,700,750,750);
+    
+    //arrow down
+    strokeWeight(15);
+    line(685,675,700,700);
+    line(700,700,715,675);
+
+    // arrow up
+    strokeWeight(15);
+    line(885,875,900,900);
+    line(900,900,915,875);
     
   }
   // if (state === "pause"){
