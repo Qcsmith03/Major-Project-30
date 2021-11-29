@@ -1,19 +1,13 @@
 # major project proposal
 
 ## discription
-Here i will describe what i am going to build. i wish to build a dance dance revolution
+Here i will describe what i am going to build. i wish to build a gambling ring
 
 ## must have list
-- start screen
-- arrows that appear and disapear
-- random arrows
-- instruction
-- click arrows (up down left right)
-- music
+- bet
+- what to bet on screen
 
 
 ## nice to have list
 //- working game
-- more than 1 level
-- sound
-- pause screen
+- 
