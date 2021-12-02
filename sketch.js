@@ -7,8 +7,14 @@ let horse2;
 let horse3;
 let music;
 let checkeredFlag;
-let funds;
+let funds = 500;
 let dx =0;
+let horseMove1 = 1300;
+let y = 500;
+let horseMove2 = 1300;
+let y2 = 300;
+let horseMove3 = 1300;
+let y3 = 100;
 
 function preload(){
   horse1 = loadImage("assets/horse.png");
@@ -31,26 +37,97 @@ function draw(){
     text("What to bet on:",500,100);
     text("Horses",500,200);
     text("Rats",500,400);
-    text(funds = 500,100,500);
+    textSize(30);
+    text("funds $",0,500);
+    text(funds,100,500);
     
   }
   if (state === "horseBetting"){
-    let x = 1300;
-    let y = 500;
+    
     
     background(255);
     text(funds,windowWidth/2,100);
     
-    image(horse1,x,y,200,200);
-    image(horse2,1300,300,200,200);
-    image(horse3,1300,100,200,200);
+    image(horse1,horseMove1,y,200,200);
+    image(horse2,horseMove2,300,200,200);
+    image(horse3,horseMove3,100,200,200);
     image(checkeredFlag,100,0,500,1000);
+    
     if (mouseIsPressed && mouseX > 1300 && mouseX < 1500 && mouseY > 600 && mouseY < 800 && state === "horseBetting"){
-      state = "racing";
+      state = "racing1";
+      funds - 100;
     }
-    if (state === "racing"){
-      background(255);
-      text(funds = funds-100,windowWidth/2,100);
+    if (mouseIsPressed && mouseX > 1300 && mouseX < 1500 && mouseY > 400 && mouseY < 500 && state === "horseBetting"){
+      state = "racing2";
+      funds - 100;
+    }
+    if (mouseIsPressed && mouseX > 1300 && mouseX < 1500 && mouseY > 100 && mouseY < 300 && state === "horseBetting"){
+      state = "racing3";
+      funds-100;
+    }
+
+  }
+  if (state === "racing1"){
+    background(255);
+    text(funds,windowWidth/2,100);
+    image(horse1,horseMove1,y,200,200);
+    image(horse2,horseMove2,300,200,200);
+    image(horse3,horseMove3,100,200,200);
+    image(checkeredFlag,100,0,500,1000);
+    if (horseMove1 > 0){
+      horseMove1-= random(1,11);
+    }
+    if (horseMove2 > 0){
+      horseMove2-= random(2,13);
+    }
+    if (horseMove3 > 0){
+      horseMove3-= random(2,12);
+    }
+    if (horseMove1 <=0){
+      state = "whatToBetScreen";
+      
+    }
+    
+  }
+  if (state === "racing2"){
+    background(255);
+    text(funds = 400,windowWidth/2,100);
+    image(horse1,horseMove1,y,200,200);
+    image(horse2,horseMove2,300,200,200);
+    image(horse3,horseMove3,100,200,200);
+    image(checkeredFlag,100,0,500,1000);
+    if (horseMove1 > 0){
+      horseMove1-= random(2,13);
+    }
+    if (horseMove2 > 0){
+      horseMove2-= random(1,11);
+    }
+    if (horseMove3 > 0){
+      horseMove3-= random(2,12);
+    }
+    if (horseMove2 <=0){
+      state = "whatToBetScreen";
+      
+    }
+  }
+  if (state === "racing3"){
+    background(255);
+    text(funds = 400,windowWidth/2,100);
+    image(horse1,horseMove1,y,200,200);
+    image(horse2,horseMove2,300,200,200);
+    image(horse3,horseMove3,100,200,200);
+    image(checkeredFlag,100,0,500,1000);
+    if (horseMove1 > 0){
+      horseMove1-= random(2,13);
+    }
+    if (horseMove2 > 0){
+      horseMove2-= random(2,12);
+    }
+    if (horseMove3 > 0){
+      horseMove3-= random(1,11);
+    }
+    if (horseMove3 <=0){
+      state = "whatToBetScreen";
       
     }
   }
@@ -63,11 +140,16 @@ function draw(){
 
 function mousePressed(){
   if (mouseX > 400 && mouseX < 650 && mouseY > 100 && mouseY < 290){
-    state = "horseBetting";  
+    state = "horseBetting"; 
+    horseMove1 = 1300;
+    horseMove2 = 1300;
+    horseMove3 = 1300;
+    image(horse1,horseMove1,y,200,200);
+    image(horse2,horseMove2,300,200,200);
+    image(horse3,horseMove3,100,200,200);
+    
   }
   if (mouseX > 401 && mouseX < 600 && mouseY > 300 && mouseY < 400 && state === "whatToBetScreen"){
     state = "ratBetting";
   }
-  
-
 }
