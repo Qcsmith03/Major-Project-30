@@ -44,7 +44,18 @@ function draw(){
     textSize(30);
     text("funds $",0,500);
     text(funds,100,500);
-    
+    if (funds <= 0){
+      textSize(100);
+      text("oh no you are out of funds,",0,600);
+      text("maybe you can win it back.",0,700);
+    }
+    if (mouseIsPressed && mouseX >500 && mouseY <100){
+      funds = 0;
+    }
+    if (funds > 500){
+      funds = -10000;
+      //add a punishment
+    }
   }
   if (state === "horseBetting"){
     
@@ -59,15 +70,15 @@ function draw(){
     
     if (mouseIsPressed && mouseX > 1300 && mouseX < 1500 && mouseY > 600 && mouseY < 800 && state === "horseBetting"){
       state = "racing1";
-      funds - 100;
+      funds = funds- 100;
     }
     if (mouseIsPressed && mouseX > 1300 && mouseX < 1500 && mouseY > 400 && mouseY < 500 && state === "horseBetting"){
       state = "racing2";
-      funds - 100;
+      funds = funds- 100;
     }
     if (mouseIsPressed && mouseX > 1300 && mouseX < 1500 && mouseY > 100 && mouseY < 300 && state === "horseBetting"){
       state = "racing3";
-      funds-100;
+      funds = funds-100;
     }
 
   }
@@ -95,7 +106,7 @@ function draw(){
   }
   if (state === "racing2"){
     background(255);
-    text(funds = 400,windowWidth/2,100);
+    text(funds,windowWidth/2,100);
     image(horse1,horseMove1,y,200,200);
     image(horse2,horseMove2,300,200,200);
     image(horse3,horseMove3,100,200,200);
@@ -116,7 +127,7 @@ function draw(){
   }
   if (state === "racing3"){
     background(255);
-    text(funds = 400,windowWidth/2,100);
+    text(funds,windowWidth/2,100);
     image(horse1,horseMove1,y,200,200);
     image(horse2,horseMove2,300,200,200);
     image(horse3,horseMove3,100,200,200);
@@ -145,12 +156,16 @@ function draw(){
     image(rat2,950,300,200,200);
     
 
+    if (mouseIsPressed && mouseX > 500 && mouseX < 600 && mouseY > 250 && mouseY < 450 && state === "ratBetting"){
+      state = "activeFightRat1";
+      funds= funds-100;
+    }
     if (mouseIsPressed && mouseX > 950 && mouseX < 1100 && mouseY > 250 && mouseY < 450 && state === "ratBetting"){
-      state = "activeFight";
-      funds-100;
+      state = "activeFightRat2";
+      funds= funds-100;
     }
   }
-  if (state === "activeFight"){
+  if (state === "activeFightRat1"){
     background(255);
     fill("black");
     text(funds,50,100);
@@ -158,6 +173,17 @@ function draw(){
     circle(windowWidth/2,windowHeight/2,750);
     image(rat,500,300,200,200);
     image(rat2,950,300,200,200);
+    
+  }
+  if (state === "activeFightRat2"){
+    background(255);
+    fill("black");
+    text(funds,50,100);
+    fill("yellow");
+    circle(windowWidth/2,windowHeight/2,750);
+    image(rat,500,300,200,200);
+    image(rat2,950,300,200,200);
+    
   }
 }
 
