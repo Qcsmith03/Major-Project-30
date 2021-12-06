@@ -40,7 +40,7 @@ function draw(){
     textSize(50);
     text("What to bet on:",500,100);
     text("Horses",500,200);
-    text("Rats",500,400);
+    text("Rats",500,300);
     textSize(30);
     text("funds $",0,500);
     text(funds,100,500);
@@ -61,7 +61,7 @@ function draw(){
     
     
     background(255);
-    text(funds,windowWidth/2,100);
+    text(funds,500,100);
     
     image(horse1,horseMove1,y,200,200);
     image(horse2,horseMove2,300,200,200);
@@ -84,7 +84,7 @@ function draw(){
   }
   if (state === "racing1"){
     background(255);
-    text(funds,windowWidth/2,100);
+    text(funds,501,100);
     image(horse1,horseMove1,y,200,200);
     image(horse2,horseMove2,300,200,200);
     image(horse3,horseMove3,100,200,200);
@@ -106,7 +106,7 @@ function draw(){
   }
   if (state === "racing2"){
     background(255);
-    text(funds,windowWidth/2,100);
+    text(funds,501,100);
     image(horse1,horseMove1,y,200,200);
     image(horse2,horseMove2,300,200,200);
     image(horse3,horseMove3,100,200,200);
@@ -127,7 +127,7 @@ function draw(){
   }
   if (state === "racing3"){
     background(255);
-    text(funds,windowWidth/2,100);
+    text(funds,501,100);
     image(horse1,horseMove1,y,200,200);
     image(horse2,horseMove2,300,200,200);
     image(horse3,horseMove3,100,200,200);
@@ -155,12 +155,14 @@ function draw(){
     image(rat,500,300,200,200);
     image(rat2,950,300,200,200);
     
+    
+    
 
-    if (mouseIsPressed && mouseX > 500 && mouseX < 600 && mouseY > 250 && mouseY < 450 && state === "ratBetting"){
+    if (mouseIsPressed && mouseX > 500 && mouseX < 700 && mouseY > 390 && mouseY < 490 && state === "ratBetting"){
       state = "activeFightRat1";
       funds= funds-100;
     }
-    if (mouseIsPressed && mouseX > 950 && mouseX < 1100 && mouseY > 250 && mouseY < 450 && state === "ratBetting"){
+    if (mouseIsPressed && mouseX > 990 && mouseX < 1100 && mouseY > 250 && mouseY < 490 && state === "ratBetting"){
       state = "activeFightRat2";
       funds= funds-100;
     }
@@ -188,7 +190,7 @@ function draw(){
 }
 
 function mousePressed(){
-  if (mouseX > 400 && mouseX < 650 && mouseY > 100 && mouseY < 290){
+  if (mouseX > 400 && mouseX < 650 && mouseY > 100 && mouseY < 250 && state === "whatToBetScreen"){
     state = "horseBetting"; 
     horseMove1 = 1300;
     horseMove2 = 1300;
@@ -198,7 +200,7 @@ function mousePressed(){
     image(horse3,horseMove3,100,200,200);
     
   }
-  if (mouseX > 401 && mouseX < 600 && mouseY > 300 && mouseY < 400 && state === "whatToBetScreen"){
+  if (mouseX > 501 && mouseX < 600 && mouseY > 260 && mouseY < 300 && state === "whatToBetScreen"){
     state = "ratBetting";
   }
 }
