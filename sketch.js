@@ -17,6 +17,10 @@ let horseMove3 = 1300;
 let y3 = 100;
 let rat;
 let rat2;
+let realRat;
+let ratX = 500;
+let rat2X = 990;
+
 
 function preload(){
   horse1 = loadImage("assets/horse.png");
@@ -25,6 +29,7 @@ function preload(){
   checkeredFlag = loadImage("assets/checkeredFlag.png");
   rat = loadImage("assets/rat.png");
   rat2 = loadImage("assets/rat2.png");
+  realRat = loadImage("assets/realRat.png");
 }
 
 function setup() {
@@ -152,8 +157,8 @@ function draw(){
     text(funds,50,100);
     fill("yellow");
     circle(windowWidth/2,windowHeight/2,750);
-    image(rat,500,300,200,200);
-    image(rat2,950,300,200,200);
+    image(rat,ratX,300,200,200);
+    image(rat2,rat2X,300,200,200);
     
     
     
@@ -173,9 +178,19 @@ function draw(){
     text(funds,50,100);
     fill("yellow");
     circle(windowWidth/2,windowHeight/2,750);
-    image(rat,500,300,200,200);
-    image(rat2,950,300,200,200);
-    
+    image(rat,ratX,300,200,200);
+    image(rat2,rat2X,300,200,200);
+    if (ratX <  700){
+      ratX ++;
+    }
+    if (rat2X >  820){
+      rat2X --;
+    }
+    if (ratX === 700){
+      ratX = 500;
+      rat2X = 990;
+      state = "whatToBetScreen";
+    }
   }
   if (state === "activeFightRat2"){
     background(255);
@@ -183,10 +198,22 @@ function draw(){
     text(funds,50,100);
     fill("yellow");
     circle(windowWidth/2,windowHeight/2,750);
-    image(rat,500,300,200,200);
-    image(rat2,950,300,200,200);
-    
+    image(rat,ratX,300,200,200);
+    image(rat2,rat2X,300,200,200);
+    if (ratX <  700){
+      ratX ++;
+    }
+    if (rat2X > 820){
+      rat2X --;
+    }
+    if (ratX === 700){
+      ratX = 500;
+      rat2X = 990;
+      state = "whatToBetScreen";
+    }
+
   }
+  
 }
 
 function mousePressed(){
