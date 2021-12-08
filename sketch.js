@@ -22,6 +22,7 @@ let ratX = 500;
 let rat2X = 990;
 
 
+
 function preload(){
   horse1 = loadImage("assets/horse.png");
   horse2 = loadImage("assets/horse2.png");
@@ -44,8 +45,8 @@ function draw(){
     fill("black");
     textSize(50);
     text("What to bet on:",500,100);
-    text("Horses",500,200);
-    text("Rats",500,300);
+    text("Horse Raceing",500,200);
+    text("Rat Fighting",500,300);
     textSize(30);
     text("funds $",0,500);
     text(funds,100,500);
@@ -58,8 +59,7 @@ function draw(){
       funds = 0;
     }
     if (funds > 500){
-      funds = -10000;
-      //add a punishment
+      state = "pergetory";
     }
   }
   if (state === "horseBetting"){
@@ -213,11 +213,26 @@ function draw(){
     }
 
   }
-  
+  if (state === "pergetory"){
+    background(0);
+    textSize(20);
+    fill("red");
+    text("cheater, go sit in a corner.",100,100,100,100);
+  }
+  if (funds < -200 && state === "whatToBetScreen"){
+    state = "don'tGamble";
+  }
+  if (state === "don'tGamble"){
+    background(255);
+    textSize(50);
+    text("you are in debt, out of cash, and your familiy is in shambles.",100,100);
+    text("go and rethink your life. don't Gamble it only leads to ruin.",100,200);
+    image(realRat,100,400,200,200);
+  }
 }
 
 function mousePressed(){
-  if (mouseX > 400 && mouseX < 650 && mouseY > 100 && mouseY < 250 && state === "whatToBetScreen"){
+  if (mouseX > 400 && mouseX < 800 && mouseY > 100 && mouseY < 250 && state === "whatToBetScreen"){
     state = "horseBetting"; 
     horseMove1 = 1300;
     horseMove2 = 1300;
@@ -227,7 +242,7 @@ function mousePressed(){
     image(horse3,horseMove3,100,200,200);
     
   }
-  if (mouseX > 501 && mouseX < 600 && mouseY > 260 && mouseY < 300 && state === "whatToBetScreen"){
+  if (mouseX > 501 && mouseX < 760 && mouseY > 260 && mouseY < 300 && state === "whatToBetScreen"){
     state = "ratBetting";
   }
 }
