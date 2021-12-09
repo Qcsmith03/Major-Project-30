@@ -20,6 +20,8 @@ let rat2;
 let realRat;
 let ratX = 500;
 let rat2X = 990;
+let debt;
+
 
 
 
@@ -31,6 +33,8 @@ function preload(){
   rat = loadImage("assets/rat.png");
   rat2 = loadImage("assets/rat2.png");
   realRat = loadImage("assets/realRat.png");
+  debt = loadImage("assets/debt.png");
+  
 }
 
 function setup() {
@@ -58,9 +62,10 @@ function draw(){
     if (mouseIsPressed && mouseX >500 && mouseY <100){
       funds = 0;
     }
-    if (funds > 500){
-      state = "pergetory";
-    }
+    
+  }
+  if (funds > 500){
+    state = "pergetory";
   }
   if (state === "horseBetting"){
     
@@ -218,6 +223,7 @@ function draw(){
     textSize(20);
     fill("red");
     text("cheater, go sit in a corner.",100,100,100,100);
+    text("Repent",200,100,100,100);
   }
   if (funds < -200 && state === "whatToBetScreen"){
     state = "don'tGamble";
@@ -228,6 +234,7 @@ function draw(){
     text("you are in debt, out of cash, and your familiy is in shambles.",100,100);
     text("go and rethink your life. don't Gamble it only leads to ruin.",100,200);
     image(realRat,100,400,200,200);
+    image(debt,400,400,200,200);
   }
 }
 
