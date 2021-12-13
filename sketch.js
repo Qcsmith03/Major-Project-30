@@ -21,7 +21,8 @@ let realRat;
 let ratX = 500;
 let rat2X = 990;
 let debt;
-
+let sound;
+let door;
 
 
 
@@ -34,7 +35,8 @@ function preload(){
   rat2 = loadImage("assets/rat2.png");
   realRat = loadImage("assets/realRat.png");
   debt = loadImage("assets/debt.png");
-  
+  sound = loadSound("assets/closing door.ogg");
+  door = loadImage("assets/door.png");
 }
 
 function setup() {
@@ -49,7 +51,7 @@ function draw(){
     fill("black");
     textSize(50);
     text("What to bet on:",500,100);
-    text("Horse Raceing",500,200);
+    text("Horse Racing",500,200);
     text("Rat Fighting",500,300);
     textSize(30);
     text("funds $",0,500);
@@ -59,9 +61,7 @@ function draw(){
       text("oh no you are out of funds,",0,600);
       text("maybe you can win it back.",0,700);
     }
-    if (mouseIsPressed && mouseX >500 && mouseY <100){
-      funds = 0;
-    }
+    
     
   }
   if (funds > 500){
@@ -236,11 +236,18 @@ function draw(){
     image(realRat,100,400,200,200);
     image(debt,400,400,200,200);
   }
+  if (state === "door"){
+    sound.play();
+    background(255);
+    //edit door more
+    image(door,0,0,1500,400);
+  }
 }
 
 function mousePressed(){
   if (mouseX > 400 && mouseX < 800 && mouseY > 100 && mouseY < 250 && state === "whatToBetScreen"){
-    state = "horseBetting"; 
+    
+    state = "door"; 
     horseMove1 = 1300;
     horseMove2 = 1300;
     horseMove3 = 1300;
@@ -250,6 +257,8 @@ function mousePressed(){
     
   }
   if (mouseX > 501 && mouseX < 760 && mouseY > 260 && mouseY < 300 && state === "whatToBetScreen"){
-    state = "ratBetting";
+    
+    state = "door";
   }
+
 }
