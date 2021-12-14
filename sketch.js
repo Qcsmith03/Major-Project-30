@@ -23,9 +23,9 @@ let rat2X = 990;
 let debt;
 let sound;
 let door;
+let doorSwitch = 0;
 
-
-
+// sets images and music
 function preload(){
   horse1 = loadImage("assets/horse.png");
   horse2 = loadImage("assets/horse2.png");
@@ -46,6 +46,7 @@ function setup() {
 
 function draw(){
   background(0);
+  // the screen to choose what to bet on
   if (state ==="whatToBetScreen"){
     background(255);
     fill("black");
@@ -64,9 +65,11 @@ function draw(){
     
     
   }
+  // cheaters go here
   if (funds > 500){
     state = "pergetory";
   }
+  // let you choose what horse to bet for the race.
   if (state === "horseBetting"){
     
     
@@ -92,6 +95,7 @@ function draw(){
     }
 
   }
+  // zombie horse thing
   if (state === "racing1"){
     background(255);
     text(funds,501,100);
@@ -114,6 +118,7 @@ function draw(){
     }
     
   }
+  // multi legged horse
   if (state === "racing2"){
     background(255);
     text(funds,501,100);
@@ -135,6 +140,7 @@ function draw(){
       
     }
   }
+  // guy with horse hat choosen
   if (state === "racing3"){
     background(255);
     text(funds,501,100);
@@ -156,6 +162,7 @@ function draw(){
       
     }
   }
+  // lets you choose what rat
   if (state === "ratBetting"){
     background(255);
     fill("black");
@@ -177,6 +184,7 @@ function draw(){
       funds= funds-100;
     }
   }
+  // if choosen rat on all fours
   if (state === "activeFightRat1"){
     background(255);
     fill("black");
@@ -197,6 +205,7 @@ function draw(){
       state = "whatToBetScreen";
     }
   }
+  // if choosen rat with gloves
   if (state === "activeFightRat2"){
     background(255);
     fill("black");
@@ -218,6 +227,7 @@ function draw(){
     }
 
   }
+  // for cheaters
   if (state === "pergetory"){
     background(0);
     textSize(20);
@@ -225,9 +235,11 @@ function draw(){
     text("cheater, go sit in a corner.",100,100,100,100);
     text("Repent",200,100,100,100);
   }
+  // sets state to dont gamble once into debt
   if (funds < -200 && state === "whatToBetScreen"){
     state = "don'tGamble";
   }
+  // into debt
   if (state === "don'tGamble"){
     background(255);
     textSize(50);
@@ -236,15 +248,11 @@ function draw(){
     image(realRat,100,400,200,200);
     image(debt,400,400,200,200);
   }
-  if (state === "door"){
-    sound.play();
-    background(255);
-    //edit door more
-    image(door,0,0,1500,400);
-  }
+  doorState();
 }
 
 function mousePressed(){
+  // clicks on horse racing
   if (mouseX > 400 && mouseX < 800 && mouseY > 100 && mouseY < 250 && state === "whatToBetScreen"){
     
     state = "door"; 
@@ -256,9 +264,38 @@ function mousePressed(){
     image(horse3,horseMove3,100,200,200);
     
   }
+  //clicks on mouse fighting
   if (mouseX > 501 && mouseX < 760 && mouseY > 260 && mouseY < 300 && state === "whatToBetScreen"){
     
-    state = "door";
+    state = "door2";
   }
 
+}
+// transitional door
+function doorState(){
+  if (state === "door"){
+    
+    background(0);
+    
+    image(door,500,-40,600,900);
+    if (millis() < doorSwitch + 1000){
+      sound.play();
+      
+    }
+    if (millis() > doorSwitch + 5000){
+      state = "horseBetting";
+      doorSwitch = millis();
+    }
+  }
+  if (state === "door2"){
+    
+    sound.play();
+    background(0);
+    
+    image(door,500,-40,600,900);
+    if (millis() > doorSwitch + 5000){
+      state = "ratBetting";
+      doorSwitch = millis();
+    }
+  }
 }
