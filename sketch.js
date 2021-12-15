@@ -24,6 +24,8 @@ let debt;
 let sound;
 let door;
 let doorSwitch = 0;
+let millisMusic = 0;
+
 
 // sets images and music
 function preload(){
@@ -37,17 +39,20 @@ function preload(){
   debt = loadImage("assets/debt.png");
   sound = loadSound("assets/closing door.ogg");
   door = loadImage("assets/door.png");
+  music = loadSound("assets/music.mp3");
 }
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
   state = "whatToBetScreen";
+  
 }
 
 function draw(){
   background(0);
   // the screen to choose what to bet on
   if (state ==="whatToBetScreen"){
+    
     background(255);
     fill("black");
     textSize(50);
@@ -68,6 +73,7 @@ function draw(){
   // cheaters go here
   if (funds > 500){
     state = "pergetory";
+    
   }
   // let you choose what horse to bet for the race.
   if (state === "horseBetting"){
@@ -249,12 +255,13 @@ function draw(){
     image(debt,400,400,200,200);
   }
   doorState();
+  
 }
 
 function mousePressed(){
   // clicks on horse racing
   if (mouseX > 400 && mouseX < 800 && mouseY > 100 && mouseY < 250 && state === "whatToBetScreen"){
-    
+    sound.play();
     state = "door"; 
     horseMove1 = 1300;
     horseMove2 = 1300;
@@ -262,12 +269,13 @@ function mousePressed(){
     image(horse1,horseMove1,y,200,200);
     image(horse2,horseMove2,300,200,200);
     image(horse3,horseMove3,100,200,200);
-    
+    doorSwitch = millis();
   }
   //clicks on mouse fighting
   if (mouseX > 501 && mouseX < 760 && mouseY > 260 && mouseY < 300 && state === "whatToBetScreen"){
-    
+    sound.play();
     state = "door2";
+    doorSwitch = millis();
   }
 
 }
@@ -278,24 +286,23 @@ function doorState(){
     background(0);
     
     image(door,500,-40,600,900);
-    if (millis() < doorSwitch + 1000){
-      sound.play();
-      
-    }
+    
     if (millis() > doorSwitch + 5000){
       state = "horseBetting";
-      doorSwitch = millis();
+      doorSwitch = 0;
     }
   }
   if (state === "door2"){
     
-    sound.play();
+    
     background(0);
     
     image(door,500,-40,600,900);
     if (millis() > doorSwitch + 5000){
       state = "ratBetting";
+      
       doorSwitch = millis();
     }
   }
+  
 }
