@@ -39,7 +39,7 @@ function preload(){
   debt = loadImage("assets/debt.png");
   sound = loadSound("assets/closing door.ogg");
   door = loadImage("assets/door.png");
-  music = loadSound("assets/music.mp3");
+  
 }
 
 function setup() {
@@ -51,6 +51,7 @@ function setup() {
 function draw(){
   background(0);
   // the screen to choose what to bet on
+  
   if (state ==="whatToBetScreen"){
     
     background(255);
