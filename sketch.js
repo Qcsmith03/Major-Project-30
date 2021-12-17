@@ -39,7 +39,7 @@ function preload(){
   debt = loadImage("assets/debt.png");
   sound = loadSound("assets/closing door.ogg");
   door = loadImage("assets/door.png");
-  
+  music = loadSound("assets/music.mp3");
 }
 
 function setup() {
@@ -256,7 +256,11 @@ function draw(){
     image(debt,400,400,200,200);
   }
   doorState();
-  
+  //music
+  if (keyIsPressed() === 32){
+    music.play();
+    console.log("howdy");
+  }
 }
 
 function mousePressed(){
@@ -278,7 +282,7 @@ function mousePressed(){
     state = "door2";
     doorSwitch = millis();
   }
-
+  
 }
 // transitional door
 function doorState(){
