@@ -257,7 +257,7 @@ function draw(){
   }
   doorState();
   //music
-  if (keyIsPressed() === 32){
+  if (keyIsPressed === 32){
     music.play();
     console.log("howdy");
   }
