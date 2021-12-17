@@ -52,6 +52,7 @@ function draw(){
   background(0);
   // the screen to choose what to bet on
   
+  
   if (state ==="whatToBetScreen"){
     
     background(255);
@@ -257,10 +258,7 @@ function draw(){
   }
   doorState();
   //music
-  if (keyIsPressed === 32){
-    music.play();
-    console.log("howdy");
-  }
+  
 }
 
 function mousePressed(){
