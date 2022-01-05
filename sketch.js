@@ -5,7 +5,6 @@ let state;
 let horse1;
 let horse2;
 let horse3;
-
 let checkeredFlag;
 let funds = 500;
 let dx =0;
