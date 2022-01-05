@@ -207,7 +207,7 @@ function draw(){
     if (rat2X >  620){
       rat2X --;
     }
-    if (ratX === 700){
+    if (ratX === 500){
       ratX = 300;
       rat2X = 790;
       state = "whatToBetScreen";
