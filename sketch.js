@@ -5,7 +5,7 @@ let state;
 let horse1;
 let horse2;
 let horse3;
-let music;
+
 let checkeredFlag;
 let funds = 500;
 let dx =0;
@@ -39,7 +39,7 @@ function preload(){
   debt = loadImage("assets/debt.png");
   sound = loadSound("assets/closing door.ogg");
   door = loadImage("assets/door.png");
-  music = loadSound("assets/music.mp3");
+  
 }
 
 function setup() {
@@ -257,7 +257,7 @@ function draw(){
     image(debt,400,400,200,200);
   }
   doorState();
-  //music
+  
   
 }
 
