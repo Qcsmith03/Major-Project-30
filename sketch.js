@@ -18,8 +18,8 @@ let y3 = 100;
 let rat;
 let rat2;
 let realRat;
-let ratX = 500;
-let rat2X = 990;
+let ratX = 300;
+let rat2X = 790;
 let debt;
 let sound;
 let door;
@@ -183,11 +183,11 @@ function draw(){
     
     
 
-    if (mouseIsPressed && mouseX > 500 && mouseX < 700 && mouseY > 390 && mouseY < 490 && state === "ratBetting"){
+    if (mouseIsPressed && mouseX > 300 && mouseX < 500 && mouseY > 390 && mouseY < 490 && state === "ratBetting"){
       state = "activeFightRat1";
       funds= funds-100;
     }
-    if (mouseIsPressed && mouseX > 990 && mouseX < 1100 && mouseY > 250 && mouseY < 490 && state === "ratBetting"){
+    if (mouseIsPressed && mouseX > 790 && mouseX < 900 && mouseY > 250 && mouseY < 490 && state === "ratBetting"){
       state = "activeFightRat2";
       funds= funds-100;
     }
@@ -201,15 +201,15 @@ function draw(){
     circle(windowWidth/2,windowHeight/2,750);
     image(rat,ratX,300,200,200);
     image(rat2,rat2X,300,200,200);
-    if (ratX <  700){
+    if (ratX <  500){
       ratX ++;
     }
-    if (rat2X >  820){
+    if (rat2X >  620){
       rat2X --;
     }
     if (ratX === 700){
-      ratX = 500;
-      rat2X = 990;
+      ratX = 300;
+      rat2X = 790;
       state = "whatToBetScreen";
     }
   }
@@ -222,15 +222,15 @@ function draw(){
     circle(windowWidth/2,windowHeight/2,750);
     image(rat,ratX,300,200,200);
     image(rat2,rat2X,300,200,200);
-    if (ratX <  700){
+    if (ratX <  500){
       ratX ++;
     }
-    if (rat2X > 820){
+    if (rat2X > 620){
       rat2X --;
     }
-    if (ratX === 700){
-      ratX = 500;
-      rat2X = 990;
+    if (ratX === 500){
+      ratX = 300;
+      rat2X = 790;
       state = "whatToBetScreen";
     }
 
