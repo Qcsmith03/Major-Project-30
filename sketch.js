@@ -11,7 +11,7 @@ let funds = 500;
 let dx =0;
 let horseMove1 = 1300;
 let y = 500;
-let horseMove2 = 1300;
+let horseMove2 =1300;
 let y2 = 300;
 let horseMove3 = 1300;
 let y3 = 100;
@@ -84,20 +84,20 @@ function draw(){
     background(255);
     text(funds,500,100);
     
-    image(horse1,horseMove1,y,200,200);
-    image(horse2,horseMove2,300,200,200);
-    image(horse3,horseMove3,100,200,200);
+    image(horse1,1000,y,200,200);
+    image(horse2,1000,300,200,200);
+    image(horse3,1000,100,200,200);
     image(checkeredFlag,100,0,500,1000);
     
-    if (mouseIsPressed && mouseX > 1300 && mouseX < 1500 && mouseY > 600 && mouseY < 800 && state === "horseBetting"){
+    if (mouseIsPressed && mouseX > 1000 && mouseX < 1200 && mouseY > 600 && mouseY < 800 && state === "horseBetting"){
       state = "racing1";
       funds = funds- 100;
     }
-    if (mouseIsPressed && mouseX > 1300 && mouseX < 1500 && mouseY > 400 && mouseY < 500 && state === "horseBetting"){
+    if (mouseIsPressed && mouseX > 1000 && mouseX < 1200 && mouseY > 400 && mouseY < 500 && state === "horseBetting"){
       state = "racing2";
       funds = funds- 100;
     }
-    if (mouseIsPressed && mouseX > 1300 && mouseX < 1500 && mouseY > 100 && mouseY < 300 && state === "horseBetting"){
+    if (mouseIsPressed && mouseX > 1000 && mouseX < 1200 && mouseY > 100 && mouseY < 300 && state === "horseBetting"){
       state = "racing3";
       funds = funds-100;
     }

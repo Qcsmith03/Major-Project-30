@@ -12,4 +12,5 @@ Here i will describe what i am going to build. i wish to build a gambling PSA
 
 ## nice to have list
 //- working game
+- transition screen
 - music
