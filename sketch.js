@@ -2,7 +2,7 @@
 //quinten smith
 
 let state;
-let horse1;
+let horse1; 
 let horse2;
 let horse3;
 let checkeredFlag;
@@ -23,7 +23,11 @@ let debt;
 let sound;
 let door;
 let doorSwitch = 0;
-let millisMusic = 0;
+let fruit;
+let fruit2;
+let fruit3;
+
+
 
 
 // sets images and music
@@ -38,7 +42,9 @@ function preload(){
   debt = loadImage("assets/debt.png");
   sound = loadSound("assets/closing door.ogg");
   door = loadImage("assets/door.png");
-  
+  fruit = loadImage("assets/fruit.png");
+  fruit2 = loadImage("assets/fruit2.png");
+  fruit3 = loadImage("assets/fruit3.png");
 }
 
 function setup() {
@@ -60,6 +66,7 @@ function draw(){
     text("What to bet on:",500,100);
     text("Horse Racing",500,200);
     text("Rat Fighting",500,300);
+    text("Slots",500,400);
     textSize(30);
     text("funds $",0,500);
     text(funds,100,500);
@@ -255,6 +262,16 @@ function draw(){
     image(realRat,100,400,200,200);
     image(debt,400,400,200,200);
   }
+  //slots
+  if (state === "Slots"){
+    background("yellow");
+    textSize(50);
+    text(funds,10,40);
+    image(fruit,500,300);
+    image(fruit2,600,300);
+    image(fruit3,700,300);
+
+  }
   doorState();
   
   
@@ -279,7 +296,12 @@ function mousePressed(){
     state = "door2";
     doorSwitch = millis();
   }
-  
+  //clicks on slots
+  if (mouseX > 500 && mouseX < 600 && mouseY > 350 && mouseY < 420 && state === "whatToBetScreen"){
+    sound.play();
+    state = "door3";
+    doorSwitch = millis();
+  }
 }
 // transitional door
 function doorState(){
@@ -303,6 +325,15 @@ function doorState(){
     if (millis() > doorSwitch + 5000){
       state = "ratBetting";
       
+      doorSwitch = millis();
+    }
+  }
+  if (state === "door3"){
+    background(0);
+
+    image(door,500,-40,600,900);
+    if (millis() > doorSwitch + 5000){
+      state = "Slots";
       doorSwitch = millis();
     }
   }
