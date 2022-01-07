@@ -267,10 +267,39 @@ function draw(){
     background("yellow");
     textSize(50);
     text(funds,10,40);
+    text("click to spin",500,600);
     image(fruit,500,300);
     image(fruit2,600,300);
     image(fruit3,700,300);
-
+    if (mouseIsPressed && state === "Slots"){
+      funds = funds - 100;
+      state = "slots2";
+    }
+  }
+  //slots after clicking
+  if (state === "slots2"){
+    background("yellow");
+    let slots1 = random(0,100);
+    if (slots1 <= 30){
+      image(fruit,500,300);
+      image(fruit2,600,300);
+      image(fruit3,700,300);
+    }
+    if (slots1 >= 31 && slots1<=60){
+      image(fruit,600,300);
+      image(fruit2,700,300);
+      image(fruit3,500,300);
+    }
+    if (slots1 >= 61 && slots1<=99){
+      image(fruit,500,300);
+      image(fruit2,600,300);
+      image(fruit3,700,300);
+    }
+    if (slots1 === 100){
+      image(fruit,500,300);
+      image(fruit,600,300);
+      image(fruit,700,300);
+    }
   }
   doorState();
   
