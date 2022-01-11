@@ -79,7 +79,7 @@ function draw(){
     
   }
   // cheaters go here
-  if (funds > 500){
+  if (funds > 10000){
     state = "pergetory";
     
   }
@@ -246,8 +246,8 @@ function draw(){
     background(0);
     textSize(20);
     fill("red");
-    text("cheater, go sit in a corner.",100,100,100,100);
-    text("Repent",200,100,100,100);
+    text("go play something else.",100,100,100,100);
+    text("please",100,400,100,100);
   }
   // sets state to dont gamble once into debt
   if (funds < -200 && state === "whatToBetScreen"){
@@ -279,26 +279,57 @@ function draw(){
   //slots after clicking
   if (state === "slots2"){
     background("yellow");
-    let slots1 = random(0,100);
-    if (slots1 <= 30){
+    text(funds,10,40);
+    text("click SpaceBar to stop",500,600);
+    let slots1 = random(0,1500);
+    if (slots1 <= 300){
       image(fruit,500,300);
       image(fruit2,600,300);
       image(fruit3,700,300);
     }
-    if (slots1 >= 31 && slots1<=60){
+    if (slots1 >= 301 && slots1<=600){
       image(fruit,600,300);
       image(fruit2,700,300);
       image(fruit3,500,300);
     }
-    if (slots1 >= 61 && slots1<=99){
+    if (slots1 >= 601 && slots1<=999){
       image(fruit,500,300);
       image(fruit2,600,300);
       image(fruit3,700,300);
     }
-    if (slots1 === 100){
+    if (slots1 >= 1000){
       image(fruit,500,300);
       image(fruit,600,300);
       image(fruit,700,300);
+    }
+    if (keyIsDown(32) && state === "slots2" && slots1 >= 1000 && slots1 <= 1500 ){
+      funds = funds+200;
+      state ="slots3"; 
+      
+    }
+    if (keyIsDown(32) && state === "slots2" && slots1 <= 300 ){
+      
+      state ="slots3";
+      
+    }
+    if (keyIsDown(32) && state === "slots2" && slots1 >= 301 && slots1 <=600 ){
+      
+      state ="slots3";
+      
+    }
+    if (keyIsDown(32) && state === "slots2" && slots1 >= 601 && slots1 <=999 ){
+      
+      state ="slots3";
+      
+    }
+  }
+  if (state === "slots3"){
+    background("yellow");
+    text(funds,10,40);
+    text("Again?",500,100);
+    text("try something else",500,300);
+    if (mouseIsPressed && mouseX <=520 && mouseX >=480 && mouseY <= 120 && mouseY >= 100){
+      state = "Slots";
     }
   }
   doorState();
