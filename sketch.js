@@ -26,6 +26,7 @@ let doorSwitch = 0;
 let fruit;
 let fruit2;
 let fruit3;
+let gamblejpg;
 
 
 
@@ -45,6 +46,7 @@ function preload(){
   fruit = loadImage("assets/fruit.png");
   fruit2 = loadImage("assets/fruit2.png");
   fruit3 = loadImage("assets/fruit3.png");
+  gamblejpg = loadImage("assets/gamble.jpg");
 }
 
 function setup() {
@@ -63,15 +65,17 @@ function draw(){
     background(255);
     fill("black");
     textSize(50);
-    text("What to bet on:",500,100);
+    text("Click down below to bet:",500,100);
     text("Horse Racing",500,200);
     text("Rat Fighting",500,300);
     text("Slots",500,400);
+    
     textSize(30);
+    text("watch your funds",0,400);
     text("funds $",0,500);
     text(funds,100,500);
     if (funds <= 0){
-      textSize(100);
+      textSize(30);
       text("oh no you are out of funds,",0,600);
       text("maybe you can win it back.",0,700);
     }
@@ -89,7 +93,8 @@ function draw(){
     
     background(255);
     text(funds,500,100);
-    
+    text("the horse you click on will be your bet",500,200);
+    text("if your horse wins you will double your funds",500,300);
     image(horse1,1000,y,200,200);
     image(horse2,1000,300,200,200);
     image(horse3,1000,100,200,200);
@@ -98,6 +103,7 @@ function draw(){
     if (mouseIsPressed && mouseX > 1000 && mouseX < 1200 && mouseY > 600 && mouseY < 800 && state === "horseBetting"){
       state = "racing1";
       funds = funds- 100;
+
     }
     if (mouseIsPressed && mouseX > 1000 && mouseX < 1200 && mouseY > 400 && mouseY < 500 && state === "horseBetting"){
       state = "racing2";
@@ -127,7 +133,9 @@ function draw(){
       horseMove3-= random(2,12);
     }
     if (horseMove1 <=0){
-      state = "whatToBetScreen";
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
       
     }
     
@@ -150,7 +158,9 @@ function draw(){
       horseMove3-= random(2,12);
     }
     if (horseMove2 <=0){
-      state = "whatToBetScreen";
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
       
     }
   }
@@ -172,7 +182,9 @@ function draw(){
       horseMove3-= random(1,11);
     }
     if (horseMove3 <=0){
-      state = "whatToBetScreen";
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
       
     }
   }
@@ -181,6 +193,8 @@ function draw(){
     background(255);
     fill("black");
     text(funds,50,100);
+    text("click on the rat you think will win",50,200);
+    text("if you win your funds will increase",120,100);
     fill("yellow");
     circle(windowWidth/2,windowHeight/2,750);
     image(rat,ratX,300,200,200);
@@ -216,7 +230,9 @@ function draw(){
     if (ratX === 500){
       ratX = 300;
       rat2X = 790;
-      state = "whatToBetScreen";
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
     }
   }
   // if choosen rat with gloves
@@ -237,11 +253,13 @@ function draw(){
     if (ratX === 500){
       ratX = 300;
       rat2X = 790;
-      state = "whatToBetScreen";
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
     }
 
   }
-  // for cheaters
+  // for lucky people or those who are board
   if (state === "pergetory"){
     background(0);
     textSize(20);
@@ -250,7 +268,7 @@ function draw(){
     text("please",100,400,100,100);
   }
   // sets state to dont gamble once into debt
-  if (funds < -200 && state === "whatToBetScreen"){
+  if (funds < -500 && state === "whatToBetScreen"){
     state = "don'tGamble";
   }
   // into debt
@@ -261,6 +279,7 @@ function draw(){
     text("go and rethink your life. don't Gamble it only leads to ruin.",100,200);
     image(realRat,100,400,200,200);
     image(debt,400,400,200,200);
+    image(gamblejpg,700,400,200,200);
   }
   //slots
   if (state === "Slots"){
@@ -328,8 +347,14 @@ function draw(){
     text(funds,10,40);
     text("Again?",500,100);
     text("try something else",500,300);
-    if (mouseIsPressed && mouseX <=520 && mouseX >=480 && mouseY <= 120 && mouseY >= 100){
+    
+    if (mouseIsPressed && mouseX <= 700 && mouseX >= 500 && mouseY <= 100 && mouseY >= 70){
       state = "Slots";
+    }
+    if (mouseIsPressed && mouseX <= 900 && mouseX >= 500 && mouseY <= 300 && mouseY >= 270){
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
     }
   }
   doorState();
@@ -371,9 +396,9 @@ function doorState(){
     
     image(door,500,-40,600,900);
     
-    if (millis() > doorSwitch + 5000){
+    if (millis() > doorSwitch + 4000){
       state = "horseBetting";
-      doorSwitch = 0;
+      doorSwitch = millis();
     }
   }
   if (state === "door2"){
@@ -382,7 +407,7 @@ function doorState(){
     background(0);
     
     image(door,500,-40,600,900);
-    if (millis() > doorSwitch + 5000){
+    if (millis() > doorSwitch + 4000){
       state = "ratBetting";
       
       doorSwitch = millis();
@@ -392,9 +417,18 @@ function doorState(){
     background(0);
 
     image(door,500,-40,600,900);
-    if (millis() > doorSwitch + 5000){
+    if (millis() > doorSwitch + 4000){
       state = "Slots";
       doorSwitch = millis();
+    }
+  }
+  if (state === "door4"){
+    background(0);
+
+    image(door,500,-40,600,900);
+    if (millis() > doorSwitch + 4000){
+      state = "whatToBetScreen";
+      doorSwitch = 0;
     }
   }
   
