@@ -93,6 +93,7 @@ function draw(){
     
     background(255);
     text(funds,500,100);
+    fill("black");
     text("the horse you click on will be your bet",500,200);
     text("if your horse wins you will double your funds",500,300);
     image(horse1,1000,y,200,200);
@@ -133,9 +134,10 @@ function draw(){
       horseMove3-= random(2,12);
     }
     if (horseMove1 <=0){
-      doorSwitch = millis();
-      sound.play();
-      state = "door4";
+      horseMove1 = 1300;
+      horseMove2 = 1300;
+      horseMove3 = 1300;
+      state = "horseAgain";
       
     }
     
@@ -157,11 +159,11 @@ function draw(){
     if (horseMove3 > 0){
       horseMove3-= random(2,12);
     }
-    if (horseMove2 <=0){
-      doorSwitch = millis();
-      sound.play();
-      state = "door4";
-      
+    if (horseMove2 <= 0){
+      horseMove1 = 1300;
+      horseMove2 = 1300;
+      horseMove3 = 1300;
+      state = "horseAgain";
     }
   }
   // guy with horse hat choosen
@@ -181,11 +183,31 @@ function draw(){
     if (horseMove3 > 0){
       horseMove3-= random(1,11);
     }
-    if (horseMove3 <=0){
+    
+    if (horseMove3 <= 0){
+      horseMove1 = 1300;
+      horseMove2 = 1300;
+      horseMove3 = 1300;
+      state = "horseAgain";
+    }
+      
+    
+  }
+  if (state === "horseAgain"){
+    background("yellow");
+    fill("black");
+    text(funds,10,40);
+    text("Again?",500,100);
+    text("try something else",500,300);
+    
+    if (mouseIsPressed && mouseX <= 700 && mouseX >= 500 && mouseY <= 100 && mouseY >= 70){
+      
+      state = "horseBetting";
+    }
+    if (mouseIsPressed && mouseX <= 900 && mouseX >= 500 && mouseY <= 300 && mouseY >= 270){
       doorSwitch = millis();
       sound.play();
       state = "door4";
-      
     }
   }
   // lets you choose what rat
@@ -230,11 +252,10 @@ function draw(){
     if (ratX === 500){
       ratX = 300;
       rat2X = 790;
-      doorSwitch = millis();
-      sound.play();
-      state = "door4";
+      state = "ratAgain";
     }
   }
+  
   // if choosen rat with gloves
   if (state === "activeFightRat2"){
     background(255);
@@ -253,11 +274,25 @@ function draw(){
     if (ratX === 500){
       ratX = 300;
       rat2X = 790;
+      state = "ratAgain";
+    }
+  
+  }
+  if (state === "ratAgain"){
+    background("yellow");
+    fill("black");
+    text(funds,10,40);
+    text("Again?",500,100);
+    text("try something else",500,300);
+    
+    if (mouseIsPressed && mouseX <= 700 && mouseX >= 500 && mouseY <= 100 && mouseY >= 70){
+      state = "ratBetting";
+    }
+    if (mouseIsPressed && mouseX <= 900 && mouseX >= 500 && mouseY <= 300 && mouseY >= 270){
       doorSwitch = millis();
       sound.play();
       state = "door4";
     }
-
   }
   // for lucky people or those who are board
   if (state === "pergetory"){
@@ -393,8 +428,9 @@ function doorState(){
   if (state === "door"){
     
     background(0);
-    
-    image(door,500,-40,600,900);
+    fill("white");
+    text("tip: mitochondria is the powerhouse of the cell",10,30);
+    image(door,600,-40,600,900);
     
     if (millis() > doorSwitch + 4000){
       state = "horseBetting";
@@ -405,8 +441,10 @@ function doorState(){
     
     
     background(0);
-    
-    image(door,500,-40,600,900);
+    fill("white");
+    text("tip: why do they call it oven when you of in the cold ",10,30);
+    text("food of out hot eat the food",10,60);
+    image(door,600,-40,600,900);
     if (millis() > doorSwitch + 4000){
       state = "ratBetting";
       
@@ -415,8 +453,10 @@ function doorState(){
   }
   if (state === "door3"){
     background(0);
-
-    image(door,500,-40,600,900);
+    fill("white");
+    text("tip: press spacebar to stop the spinning of the slots",10,30);
+    fill("black");
+    image(door,600,-40,600,900);
     if (millis() > doorSwitch + 4000){
       state = "Slots";
       doorSwitch = millis();
@@ -425,7 +465,7 @@ function doorState(){
   if (state === "door4"){
     background(0);
 
-    image(door,500,-40,600,900);
+    image(door,600,-40,600,900);
     if (millis() > doorSwitch + 4000){
       state = "whatToBetScreen";
       doorSwitch = 0;
