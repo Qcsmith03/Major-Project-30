@@ -27,8 +27,8 @@ let fruit;
 let fruit2;
 let fruit3;
 let gamblejpg;
-
-
+let background1;
+let music;
 
 
 // sets images and music
@@ -47,12 +47,20 @@ function preload(){
   fruit2 = loadImage("assets/fruit2.png");
   fruit3 = loadImage("assets/fruit3.png");
   gamblejpg = loadImage("assets/gamble.jpg");
+  background1 = loadImage("assets/casino.jpeg");
+  music = loadSound("assets/music.mp3");
 }
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
   state = "whatToBetScreen";
-  
+  if (state === "whatToBetScreen"){
+    music.play();
+    music.setVolume(0.2);
+  }
+  else{
+    music.stop();
+  }
 }
 
 function draw(){
@@ -63,7 +71,9 @@ function draw(){
   if (state ==="whatToBetScreen"){
     
     background(255);
-    fill("black");
+    
+    image(background1,0,0,2000,1000);
+    fill("green");
     textSize(50);
     text("Click down below to bet:",500,100);
     text("Horse Racing",500,200);
@@ -72,6 +82,7 @@ function draw(){
     
     textSize(30);
     text("watch your funds",0,400);
+    fill("red");
     text("funds $",0,500);
     text(funds,100,500);
     if (funds <= 0){
@@ -334,7 +345,7 @@ function draw(){
   if (state === "slots2"){
     background("yellow");
     text(funds,10,40);
-    text("click SpaceBar to stop",500,600);
+    text("press Spacebar to stop",500,600);
     let slots1 = random(0,1500);
     if (slots1 <= 300){
       image(fruit,500,300);
@@ -347,9 +358,9 @@ function draw(){
       image(fruit3,500,300);
     }
     if (slots1 >= 601 && slots1<=999){
-      image(fruit,500,300);
-      image(fruit2,600,300);
-      image(fruit3,700,300);
+      image(fruit,700,300);
+      image(fruit2,500,300);
+      image(fruit3,600,300);
     }
     if (slots1 >= 1000){
       image(fruit,500,300);
@@ -363,26 +374,83 @@ function draw(){
     }
     if (keyIsDown(32) && state === "slots2" && slots1 <= 300 ){
       
-      state ="slots3";
+      state ="slots4";
       
     }
     if (keyIsDown(32) && state === "slots2" && slots1 >= 301 && slots1 <=600 ){
       
-      state ="slots3";
+      state ="slots5";
       
     }
     if (keyIsDown(32) && state === "slots2" && slots1 >= 601 && slots1 <=999 ){
       
-      state ="slots3";
+      state ="slots6";
       
     }
   }
   if (state === "slots3"){
     background("yellow");
+    image(fruit,500,400);
+    image(fruit,600,400);
+    image(fruit,700,400);
     text(funds,10,40);
     text("Again?",500,100);
     text("try something else",500,300);
     
+    if (mouseIsPressed && mouseX <= 700 && mouseX >= 500 && mouseY <= 100 && mouseY >= 70){
+      state = "Slots";
+    }
+    if (mouseIsPressed && mouseX <= 900 && mouseX >= 500 && mouseY <= 300 && mouseY >= 270){
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
+    }
+  }
+  if (state === "slots4"){
+    background("yellow");
+    image(fruit,500,400);
+    image(fruit2,600,400);
+    image(fruit3,700,400);
+    text(funds,10,40);
+    text("Again?",500,100);
+    text("try something else",500,300);
+      
+    if (mouseIsPressed && mouseX <= 700 && mouseX >= 500 && mouseY <= 100 && mouseY >= 70){
+      state = "Slots";
+    }
+    if (mouseIsPressed && mouseX <= 900 && mouseX >= 500 && mouseY <= 300 && mouseY >= 270){
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
+    }
+  }
+  if (state === "slots5"){
+    background("yellow");
+    image(fruit,600,400);
+    image(fruit2,700,400);
+    image(fruit3,500,400);
+    text(funds,10,40);
+    text("Again?",500,100);
+    text("try something else",500,300);
+        
+    if (mouseIsPressed && mouseX <= 700 && mouseX >= 500 && mouseY <= 100 && mouseY >= 70){
+      state = "Slots";
+    }
+    if (mouseIsPressed && mouseX <= 900 && mouseX >= 500 && mouseY <= 300 && mouseY >= 270){
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
+    }
+  }
+  if (state === "slots6"){
+    background("yellow");
+    image(fruit,700,400);
+    image(fruit2,500,400);
+    image(fruit3,600,400);
+    text(funds,10,40);
+    text("Again?",500,100);
+    text("try something else",500,300);
+          
     if (mouseIsPressed && mouseX <= 700 && mouseX >= 500 && mouseY <= 100 && mouseY >= 70){
       state = "Slots";
     }
