@@ -29,7 +29,9 @@ let fruit3;
 let gamblejpg;
 let background1;
 let music;
-
+let cheer;
+let deadrat;
+let deadrat2;
 
 // sets images and music
 function preload(){
@@ -49,6 +51,9 @@ function preload(){
   gamblejpg = loadImage("assets/gamble.jpg");
   background1 = loadImage("assets/casino.jpeg");
   music = loadSound("assets/music.mp3");
+  cheer = loadSound("assets/cheer.mp3");
+  deadrat = loadImage("assets/rat dead.png");
+  deadrat2 = loadImage("assets/rat2 dead.png");
 }
 
 function setup() {
@@ -115,15 +120,17 @@ function draw(){
     if (mouseIsPressed && mouseX > 1000 && mouseX < 1200 && mouseY > 600 && mouseY < 800 && state === "horseBetting"){
       state = "racing1";
       funds = funds- 100;
-
+      cheer.play();
     }
     if (mouseIsPressed && mouseX > 1000 && mouseX < 1200 && mouseY > 400 && mouseY < 500 && state === "horseBetting"){
       state = "racing2";
       funds = funds- 100;
+      cheer.play();
     }
     if (mouseIsPressed && mouseX > 1000 && mouseX < 1200 && mouseY > 100 && mouseY < 300 && state === "horseBetting"){
       state = "racing3";
       funds = funds-100;
+      cheer.play();
     }
 
   }
@@ -149,7 +156,7 @@ function draw(){
       horseMove2 = 1300;
       horseMove3 = 1300;
       state = "horseAgain";
-      
+      cheer.stop();
     }
     
   }
@@ -175,6 +182,7 @@ function draw(){
       horseMove2 = 1300;
       horseMove3 = 1300;
       state = "horseAgain";
+      cheer.stop();
     }
   }
   // guy with horse hat choosen
@@ -200,6 +208,7 @@ function draw(){
       horseMove2 = 1300;
       horseMove3 = 1300;
       state = "horseAgain";
+      cheer.stop();
     }
       
     
@@ -285,7 +294,7 @@ function draw(){
     if (ratX === 500){
       ratX = 300;
       rat2X = 790;
-      state = "ratAgain";
+      state = "ratAgain2";
     }
   
   }
@@ -295,7 +304,27 @@ function draw(){
     text(funds,10,40);
     text("Again?",500,100);
     text("try something else",500,300);
+    image(deadrat,500,500,100,100);
+    text("you lose",500,700);
     
+    if (mouseIsPressed && mouseX <= 700 && mouseX >= 500 && mouseY <= 100 && mouseY >= 70){
+      state = "ratBetting";
+    }
+    if (mouseIsPressed && mouseX <= 900 && mouseX >= 500 && mouseY <= 300 && mouseY >= 270){
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
+    }
+  }
+  if (state === "ratAgain2"){
+    background("yellow");
+    fill("black");
+    text(funds,10,40);
+    text("Again?",500,100);
+    text("try something else",500,300);
+    image(deadrat2,500,500,100,100);
+    text("you lose",500,700);
+
     if (mouseIsPressed && mouseX <= 700 && mouseX >= 500 && mouseY <= 100 && mouseY >= 70){
       state = "ratBetting";
     }
