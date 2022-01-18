@@ -351,10 +351,17 @@ function draw(){
     background(255);
     textSize(50);
     text("you are in debt, out of cash, and your familiy is in shambles.",100,100);
-    text("go and rethink your life. don't Gamble it only leads to ruin.",100,200);
+    text("Go and rethink your life. Don't gamble it only leads to ruin.",100,200);
+    text("Try again",500,700);
     image(realRat,100,400,200,200);
     image(debt,400,400,200,200);
     image(gamblejpg,700,400,200,200);
+    if (mouseIsPressed && mouseX <= 800 && mouseX >= 500 && mouseY <= 700 && mouseY >= 670){
+      funds=500;
+      doorSwitch = millis();
+      sound.play();
+      state = "door4";
+    }
   }
   //slots
   if (state === "Slots"){
@@ -529,7 +536,7 @@ function doorState(){
     text("tip: mitochondria is the powerhouse of the cell",10,30);
     image(door,600,-40,600,900);
     
-    if (millis() > doorSwitch + 4000){
+    if (millis() > doorSwitch + 2000){
       state = "horseBetting";
       doorSwitch = millis();
     }
@@ -542,7 +549,7 @@ function doorState(){
     text("tip: why do they call it oven when you of in the cold ",10,30);
     text("food of out hot eat the food",10,60);
     image(door,600,-40,600,900);
-    if (millis() > doorSwitch + 4000){
+    if (millis() > doorSwitch + 2000){
       state = "ratBetting";
       
       doorSwitch = millis();
@@ -554,7 +561,7 @@ function doorState(){
     text("tip: press spacebar to stop the spinning of the slots",10,30);
     fill("black");
     image(door,600,-40,600,900);
-    if (millis() > doorSwitch + 4000){
+    if (millis() > doorSwitch + 2000){
       state = "Slots";
       doorSwitch = millis();
     }
@@ -563,7 +570,7 @@ function doorState(){
     background(0);
 
     image(door,600,-40,600,900);
-    if (millis() > doorSwitch + 4000){
+    if (millis() > doorSwitch + 2000){
       state = "whatToBetScreen";
       doorSwitch = 0;
     }
