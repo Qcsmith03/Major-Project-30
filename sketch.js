@@ -497,8 +497,6 @@ function draw(){
     }
   }
   doorState();
-  
-  
 }
 
 function mousePressed(){
@@ -543,7 +541,6 @@ function doorState(){
   }
   if (state === "door2"){
     
-    
     background(0);
     fill("white");
     text("tip: why do they call it oven when you of in the cold ",10,30);
@@ -575,5 +572,4 @@ function doorState(){
       doorSwitch = 0;
     }
   }
-  
 }
